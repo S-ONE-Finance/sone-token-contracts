@@ -1,0 +1,44 @@
+{
+  "name": "@s-one-finance/core",
+  "description": "🛠 Smart Contract for S-ONE Finance Swap.",
+  "version": "0.0.2",
+  "main": "index.js",
+  "files": [
+    "build",
+    "contracts"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/S-ONE-Finance/soneswap-core.git",
+  "keywords": [
+    "soneswap",
+    "ethereum",
+    "uniswap",
+    "sushiswap"
+  ],
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.1.0",
+    "@openzeppelin/test-helpers": "^0.5.6",
+    "@truffle/hdwallet-provider": "^1.2.1",
+    "dotenv": "^8.2.0",
+    "ethereumjs-util": "^6.2.0",
+    "mocha": "^6.2.2",
+    "truffle": "^5.1.44",
+    "truffle-flattener": "^1.4.4",
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "scripts": {
+    "compile": "yarn truffle compile",
+    "flatten": "yarn truffle-flattener",
+    "deploy-swap:local": "yarn truffle migrate -f 2 --to 2 --network dev",
+    "deploy-weth:local": "yarn truffle migrate -f 3 --to 3 --network dev",
+    "deploy-SONE:local": "yarn truffle migrate -f 4 --to 4 --network dev",
+    "deploy-stake:local": "yarn truffle migrate -f 5 --to 5 --network dev",
+    "deploy-swap:ropsten": "yarn truffle migrate -f 2 --to 2 --network ropsten",
+    "deploy-SONE:ropsten": "yarn truffle migrate -f 4 --to 4 --network ropsten",
+    "deploy-stake:ropsten": "yarn truffle migrate -f 5 --to 5 --network ropsten",
+    "deploy-swap:rinkeby": "yarn truffle migrate -f 2 --to 2 --network rinkeby",
+    "deploy-SONE:rinkeby": "yarn truffle migrate -f 4 --to 4 --network rinkeby",
+    "deploy-stake:rinkeby": "yarn truffle migrate -f 5 --to 5 --network rinkeby",
+    "test": "yarn truffle test"
+  }
+}

@@ -1,0 +1,18 @@
+# Dependecies
+/node_modules/
+
+# Build
+/build
+
+# System
+.DS_Store
+
+# Runtime
+*.log
+
+# IDE
+.idea
+.vscode
+
+# Privacy
+.env
