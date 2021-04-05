@@ -1,4 +1,4 @@
-# S-ONE Finance Swap Core
+# S-ONE Finance SONE token
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
@@ -15,33 +15,17 @@ To run the project, follow these steps. You must have at least node v10 and [yar
 First clone the repository:
 
 ```sh
-git clone https://github.com/S-ONE-Finance/soneswap-core.git
+git clone https://github.com/S-ONE-Finance/sone-token.git
 ```
 
-Move into the soneswap-sdk working directory
+Move into the sone-token working directory
 
 ```sh
-cd soneswap-core
+cd sone-token
 ```
 
 Install dependencies
 
 ```sh
 yarn install
-```
-
-## Installing in another project
-
-To install this @s-one-finance/core:
-
-Using npm cli:
-
-```
-npm install --save @s-one-finance/core@latest
-```
-
-Using yarn cli:
-
-```
-yarn add @s-one-finance/core@latest
 ```
