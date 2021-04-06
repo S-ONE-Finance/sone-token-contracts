@@ -18,7 +18,7 @@ contract SoneToken is ERC20("SONE Token", "SONE"), Ownable {
 
     event Lock(address indexed to, uint256 value);
 
-    constructor(uint256 _lockFromBlock, uint256 _lockToBlock) public {
+    constructor(uint256 _lockFromBlock, uint256 _lockToBlock) {
         lockFromBlock = _lockFromBlock;
         lockToBlock = _lockToBlock;
     }
@@ -31,7 +31,7 @@ contract SoneToken is ERC20("SONE Token", "SONE"), Ownable {
     }
 
     function circulatingSupply() public view returns (uint256) {
-        return totalSupply().sub(_totalLock);
+        return totalSupply() - _totalLock;
     }
 
     function totalLock() public view returns (uint256) {
@@ -49,7 +49,7 @@ contract SoneToken is ERC20("SONE Token", "SONE"), Ownable {
         super._beforeTokenTransfer(from, to, amount);
 
         if (from == address(0)) { // When minting tokens
-            require(totalSupply().add(amount) <= _cap, "ERC20Capped: cap exceeded");
+            require(totalSupply() + amount <= _cap, "ERC20Capped: cap exceeded");
         }
     }
 
@@ -71,13 +71,13 @@ contract SoneToken is ERC20("SONE Token", "SONE"), Ownable {
         super._transfer(sender, recipient, amount);
     }
 
-    /// @notice Creates `_amount` token to `_to`. Must only be called by the owner (MasterChef).
+    /// @notice Creates `_amount` token to `_to`. Must only be called by the owner.
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);
     }
 
     function totalBalanceOf(address _holder) public view returns (uint256) {
-        return _locks[_holder].add(balanceOf(_holder));
+        return _locks[_holder] + balanceOf(_holder);
     }
 
     function lockOf(address _holder) public view returns (uint256) {
@@ -94,8 +94,8 @@ contract SoneToken is ERC20("SONE Token", "SONE"), Ownable {
 
         _transfer(_holder, address(this), _amount);
 
-        _locks[_holder] = _locks[_holder].add(_amount);
-        _totalLock = _totalLock.add(_amount);
+        _locks[_holder] = _locks[_holder] + _amount;
+        _totalLock = _totalLock + _amount;
         if (_lastUnlockBlock[_holder] < lockFromBlock) {
             _lastUnlockBlock[_holder] = lockFromBlock;
         }
@@ -110,9 +110,9 @@ contract SoneToken is ERC20("SONE Token", "SONE"), Ownable {
             return _locks[_holder];
         }
         else {
-            uint256 releaseBlock = block.number.sub(_lastUnlockBlock[_holder]);
-            uint256 numberLockBlock = lockToBlock.sub(_lastUnlockBlock[_holder]);
-            return _locks[_holder].mul(releaseBlock).div(numberLockBlock);
+            uint256 releaseBlock = block.number + _lastUnlockBlock[_holder];
+            uint256 numberLockBlock = lockToBlock + _lastUnlockBlock[_holder];
+            return _locks[_holder] * releaseBlock / numberLockBlock;
         }
     }
 
@@ -125,14 +125,14 @@ contract SoneToken is ERC20("SONE Token", "SONE"), Ownable {
             amount = balanceOf(address(this));
         }
         _transfer(address(this), msg.sender, amount);
-        _locks[msg.sender] = _locks[msg.sender].sub(amount);
+        _locks[msg.sender] = _locks[msg.sender] - amount;
         _lastUnlockBlock[msg.sender] = block.number;
-        _totalLock = _totalLock.sub(amount);
+        _totalLock = _totalLock - amount;
     }
 
     // This function is for dev address migrate all balance to a multi sig address
     function transferAll(address _to) public {
-        _locks[_to] = _locks[_to].add(_locks[msg.sender]);
+        _locks[_to] = _locks[_to] + _locks[msg.sender];
 
         if (_lastUnlockBlock[_to] < lockFromBlock) {
             _lastUnlockBlock[_to] = lockFromBlock;

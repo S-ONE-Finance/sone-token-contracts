@@ -21,13 +21,15 @@
     "@truffle/hdwallet-provider": "^1.2.1",
     "dotenv": "^8.2.0",
     "mocha": "^8.3.2",
+    "rimraf": "^3.0.2",
     "truffle": "^5.1.44",
     "truffle-flattener": "^1.4.4",
     "truffle-hdwallet-provider": "^1.0.17"
   },
   "scripts": {
+    "precompile": "rimraf ./build/contracts/",
     "compile": "yarn truffle compile",
-    "flatten": "yarn truffle-flattener",
+    "flatten": "mkdir -p build/flatten-contracts && yarn truffle-flattener",
     "deploy:local": "yarn truffle migrate --network dev",
     "deploy:ropsten": "yarn truffle migrate --network ropsten",
     "deploy:rinkeby": "yarn truffle migrate --network rinkeby",
