@@ -27,7 +27,7 @@
     "truffle-hdwallet-provider": "^1.0.17"
   },
   "scripts": {
-    "precompile": "rimraf ./build/contracts/",
+    "precompile": "rimraf ./build/",
     "compile": "yarn truffle compile",
     "flatten": "mkdir -p build/flatten-contracts && yarn truffle-flattener",
     "deploy:local": "yarn truffle migrate --network dev",
