@@ -7,13 +7,17 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-// SONE Token based on ERC-20 standard
-contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable {
-    uint256 private _cap = 100000000e18;    // Maximum supply
-    uint256 private _totalLock;             // Pre-caculate total locked SONE tokens
+import "./WhitelistRole.sol";
 
-    uint256 public lockFromBlock;           // Block number that SONE token is locked from
-    uint256 public lockToBlock;             // Block number that SONE token is locked to
+// SONE Token based on ERC-20 standard
+contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable, WhitelistRole {
+    uint256 private _cap = 100000000e18;                    // Maximum supply
+    uint256 private _totalLock;                             // Pre-caculate total locked SONE tokens
+
+    // uint256 public allowTransferOn = 12549338;           // Blocker number 12549338 (on mainnet) ~ 2021-05-31 23:59:59 GMT+9 timezone
+    uint256 public allowTransferOn = 10270806;              // Blocker number 10270806 (on ropsten) ~ 2021-05-31 23:59:59 GMT+9 timezone
+    uint256 public lockFromBlock;                           // Block number that SONE token is locked from
+    uint256 public lockToBlock;                             // Block number that SONE token is locked to
 
     mapping(address => uint256) private _locks;             // Current locked SONE of each address
     mapping(address => uint256) private _lastUnlockBlock;   // The last block number that a address's SONE is unlocked
@@ -46,7 +50,7 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable {
      * Can only be called by the current owner.
      */
     function mint(address _to, uint256 _amount) public onlyOwner {
-        super._mint(_to, _amount);
+        _mint(_to, _amount);
     }
 
     /**
@@ -88,7 +92,7 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable {
     }
 
     /**
-     * @dev Return true if an address can unlock SONE token.
+     * @dev Return number of SONE token that the address can unlock.
      */
     function canUnlockAmount(address _holder) public view returns (uint256) {
         if (block.number < lockFromBlock) {
@@ -108,10 +112,9 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable {
      * @dev Unlock SONE token for the sender
      */
     function unlock() public {
-        require(_locks[msg.sender] > 0, "ERC20: cannot unlock");
+        require(_locks[msg.sender] > 0, "ERC20: there aren't SONE to unlock");
         
         uint256 amount = canUnlockAmount(msg.sender);
-        // just for sure
         if (amount > balanceOf(address(this))) {
             amount = balanceOf(address(this));
         }
@@ -146,5 +149,13 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable {
      */
     function _mint(address account, uint256 amount) internal virtual override(ERC20, ERC20Capped) {
         super._mint(account, amount);
+    }
+
+    /**
+     * @dev See {ERC20-_transfer}.
+     */
+    function _transfer(address sender, address recipient, uint256 amount) internal virtual override(ERC20) {
+        require(block.number > allowTransferOn);
+        super._transfer(sender, recipient, amount);
     }
 }
