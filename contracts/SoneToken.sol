@@ -155,7 +155,7 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable, WhitelistRole 
      * @dev See {ERC20-_transfer}.
      */
     function _transfer(address sender, address recipient, uint256 amount) internal virtual override(ERC20) {
-        require(block.number > allowTransferOn);
+        require(block.number > allowTransferOn || hasRole(WHITELIST_ROLE, sender));
         super._transfer(sender, recipient, amount);
     }
 }
