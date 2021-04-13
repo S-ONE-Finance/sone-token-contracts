@@ -20,14 +20,14 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await tryCatch(this.soneToken.mint(
         alice,
         1000,
-        { from: alice }  
+        { from: alice }
       ), errTypes.onlyOwner)
     })
     
     it('mint over cap', async () => {
       await tryCatch(this.soneToken.mint(
         alice,
-        100000000**18,
+        BN(100000000).mul(BN(Math.pow(10,19))).toString(),
         { from: owner }  
       ), errTypes.mintOverCap)
     })
@@ -45,8 +45,9 @@ contract('SoneToken', ([owner, alice, bob]) => {
     })
 
     it('mint 1000 & burn 200 when not access', async () => {
-      await tryCatch(this.soneToken.burn(
+      await tryCatch(this.soneToken.burnFrom(
         alice,
+        200,
         { from: owner }  
       ), errTypes.accessBurn)
     })
@@ -68,7 +69,7 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await tryCatch(this.soneToken.lock(
         alice,
         750,
-        { from: alice }  
+        { from: owner }  
       ), errTypes.cantTransfer)
     })
 
@@ -77,7 +78,7 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await tryCatch(this.soneToken.lock(
         alice,
         1200,
-        { from: alice }  
+        { from: owner }  
       ), errTypes.lockOverBalance)
     })
 
@@ -113,7 +114,7 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await tryCatch(this.soneToken.lock(
         alice,
         750,
-        { from: alice }  
+        { from: owner }  
       ), errTypes.cantTransfer)
     })
 
@@ -141,7 +142,7 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await tryCatch(this.soneToken.lock(
         alice,
         100,
-        { from: alice }  
+        { from: owner }  
       ), errTypes.cantTransfer)
     })
 
@@ -158,7 +159,7 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await tryCatch(this.soneToken.lock(
         alice,
         100,
-        { from: alice }  
+        { from: owner }  
       ), errTypes.cantTransfer)
     })
 
