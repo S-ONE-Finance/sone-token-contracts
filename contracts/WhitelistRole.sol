@@ -10,6 +10,7 @@ contract WhitelistRole is Context, AccessControl {
 
     event WhitelistAdded(address indexed account);
     event WhitelistRemoved(address indexed account);
+    event WhitelistRevoked(address indexed account);
 
     constructor() {
         // Grant the contract deployer the default admin role: it will be able
@@ -42,8 +43,14 @@ contract WhitelistRole is Context, AccessControl {
         emit WhitelistAdded(account);
     }
 
-    function renounceWhitelist() public {
+    function renounceWhitelist() public onlyWhitelist{
         renounceRole(WHITELIST_ROLE, _msgSender());
         emit WhitelistRemoved(_msgSender());
+    }
+
+
+    function revokeWhitelist(address account_) public onlyWhitelist{
+        revokeRole(WHITELIST_ROLE, account_);
+        emit WhitelistRevoked(account_);
     }
 }

@@ -78,8 +78,8 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable, WhitelistRole 
      * @dev Lock a SONE token amount of a address.
      */
     function lock(address _holder, uint256 _amount) public onlyOwner {
-        require(_holder != address(0), "ERC20: lock to the zero address");
-        require(_amount <= balanceOf(_holder), "ERC20: lock amount over blance");
+        require(_holder != address(0), "SoneToken: lock to the zero address");
+        require(_amount <= balanceOf(_holder), "SoneToken: lock amount over blance");
 
         _transfer(_holder, address(this), _amount);
 
@@ -112,7 +112,7 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable, WhitelistRole 
      * @dev Unlock SONE token for the sender
      */
     function unlock() public {
-        require(_locks[msg.sender] > 0, "ERC20: there aren't SONE to unlock");
+        require(_locks[msg.sender] > 0, "SoneToken: there aren't SONE to unlock");
         
         uint256 amount = canUnlockAmount(msg.sender);
         if (amount > balanceOf(address(this))) {
@@ -155,7 +155,29 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable, WhitelistRole 
      * @dev See {ERC20-_transfer}.
      */
     function _transfer(address sender, address recipient, uint256 amount) internal virtual override(ERC20) {
-        require(block.number > allowTransferOn || hasRole(WHITELIST_ROLE, sender));
+        require(block.number > allowTransferOn || hasRole(WHITELIST_ROLE, sender), "SoneToken: your SONE can't transfer right now");
         super._transfer(sender, recipient, amount);
+    }
+    /**
+     * @dev Set from block to lock balance
+     * Can only be called by the current owner.
+     */
+    function setLockFromBlock(uint256 lockFromBlock_) external onlyOwner{
+        lockFromBlock = lockFromBlock_;
+    }
+    /**
+     * @dev Set to block to lock balance
+     * Can only be called by the current owner.
+     */
+    function setLockToBlock(uint256 lockToBlock_) external onlyOwner{
+        lockToBlock = lockToBlock_;
+    }
+    /**
+     * @dev Set block allow transfer on
+     * Can only be called by the current owner.
+     */
+    function setAllowTransferOn(uint256 allowTransferOn_) external onlyOwner{
+        require(block.number < allowTransferOn && allowTransferOn_ < allowTransferOn, "Invalid new allowTransferOn");
+        allowTransferOn = allowTransferOn_;
     }
 }
