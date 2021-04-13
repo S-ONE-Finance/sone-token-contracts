@@ -155,7 +155,28 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable, WhitelistRole 
      * @dev See {ERC20-_transfer}.
      */
     function _transfer(address sender, address recipient, uint256 amount) internal virtual override(ERC20) {
-        require(block.number > allowTransferOn || hasRole(WHITELIST_ROLE, sender));
+        require(block.number > allowTransferOn || hasRole(WHITELIST_ROLE, sender), "Can not transfer at time");
         super._transfer(sender, recipient, amount);
+    }
+    /**
+     * @dev Set from block to lock balance
+     * Can only be called by the current owner.
+     */
+    function setLockFromBlock(uint256 lockFromBlock_) external onlyOwner{
+        lockFromBlock = lockFromBlock_;
+    }
+    /**
+     * @dev Set to block to lock balance
+     * Can only be called by the current owner.
+     */
+    function setLockToBlock(uint256 lockToBlock_) external onlyOwner{
+        lockToBlock = lockToBlock_;
+    }
+    /**
+     * @dev Set block allow transfer on
+     * Can only be called by the current owner.
+     */
+    function setAllowTransferOn(uint256 allowTransferOn_) external onlyOwner{
+        allowTransferOn = allowTransferOn_;
     }
 }
