@@ -11,8 +11,8 @@ module.exports.tryCatch = async function(promise, errType) {
     try {
         await promise;
         throw null;
-    }
-    catch (error) {
+    } catch (error) {
+        console.log(error)
         assert(error.reason, errType);
     }
 };
