@@ -182,6 +182,12 @@ contract('SoneToken', ([owner, alice, bob]) => {
       ), errTypes.cantTransfer)
     })
 
+    it('not set allowTransferOn', async () => {
+      await tryCatch(
+        this.soneToken.setAllowTransferOn(10270808, {from: owner}
+      ), errTypes.setAllowTransferOn)
+    })
+
     it('can transfer', async () => {
       await this.soneToken.setAllowTransferOn(1, {from: owner})
       await this.soneToken.transfer(bob, 250, { from: alice })

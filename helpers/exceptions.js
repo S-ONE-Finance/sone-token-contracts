@@ -4,7 +4,8 @@ module.exports.errTypes = {
     lockOverBalance      : "SoneToken: lock amount over blance",
     mintOverCap          : "ERC20Capped: cap exceeded",
     accessWhitelist      : "WhitelistRole: Caller is not a whitelist role",
-    accessBurn           : "ERC20: burn amount exceeds allowance"
+    accessBurn           : "ERC20: burn amount exceeds allowance",
+    setAllowTransferOn   : "SoneToken: invalid new allowTransferOn"
 }
 
 module.exports.tryCatch = async function(promise, errType) {
