@@ -177,7 +177,7 @@ contract SoneToken is ERC20, ERC20Capped, ERC20Burnable, Ownable, WhitelistRole 
      * Can only be called by the current owner.
      */
     function setAllowTransferOn(uint256 allowTransferOn_) external onlyOwner{
-        require(block.number < allowTransferOn && allowTransferOn_ < allowTransferOn, "Invalid new allowTransferOn");
+        require(block.number < allowTransferOn && allowTransferOn_ < allowTransferOn, "SoneToken: invalid new allowTransferOn");
         allowTransferOn = allowTransferOn_;
     }
 }
