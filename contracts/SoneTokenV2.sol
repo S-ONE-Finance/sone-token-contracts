@@ -12,7 +12,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./WhitelistRole.sol";
 
 // SONE Token based on ERC-20 standard
-contract SoneToken is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC20CappedUpgradeable, ERC20BurnableUpgradeable, WhitelistRole {
+contract SoneTokenV2 is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC20CappedUpgradeable, ERC20BurnableUpgradeable, WhitelistRole {
     uint256 private _cap;                    // Maximum supply
     uint256 private _totalLock;                             // Pre-caculate total locked SONE tokens
 
@@ -25,18 +25,6 @@ contract SoneToken is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC20
     mapping(address => uint256) private _lastUnlockBlock;   // The last block number that a address's SONE is unlocked
 
     event Lock(address indexed to, uint256 value);
-
-    function __SoneToken_init(uint256 lockFromBlock_, uint256 lockToBlock_) public initializer{
-        _cap = 100000000e18;
-        allowTransferOn = 10270806;
-        lockFromBlock = lockFromBlock_;
-        lockToBlock = lockToBlock_;
-        __ERC20_init("SONE Token", "SONE");
-        __ERC20Capped_init(_cap);
-        __Ownable_init();
-        __ERC20Burnable_init();
-        __WhitelistRole_init();
-    }
 
     /**
      * @dev Return current circulatable SONE tokens.
@@ -57,7 +45,7 @@ contract SoneToken is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC20
      * Can only be called by the current owner.
      */
     function mint(address _to, uint256 _amount) public onlyOwner {
-        _mint(_to, _amount);
+        _mint(_to, _amount+1000);
     }
 
     /**

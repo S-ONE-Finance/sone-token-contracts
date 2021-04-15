@@ -17,7 +17,8 @@
   ],
   "dependencies": {
     "@openzeppelin/contracts": "^4.0.0",
-    "@openzeppelin/test-helpers": "^0.5.10",
+    "@openzeppelin/contracts-upgradeable": "^4.0.0",
+    "@openzeppelin/test-helpers": "^0.5.6",
     "@truffle/hdwallet-provider": "^1.2.1",
     "dotenv": "^8.2.0",
     "mocha": "^8.3.2",
@@ -37,5 +38,8 @@
     "deploy:bsc": "yarn truffle migrate --network bsc",
     "deploy:bsc_testnet": "yarn truffle migrate --network bsc_testnet",
     "test": "yarn truffle test"
+  },
+  "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.5.1"
   }
 }
