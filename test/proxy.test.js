@@ -12,8 +12,6 @@ contract('SoneToken', ([owner, alice, bob]) => {
     // Deploy SONE proxy token
     this.soneTokenV1 = await deployProxy(SoneToken, [1, 1000], {
       initializer: '__SoneToken_init',
-    }, {
-      from: alice
     })
   })
 
