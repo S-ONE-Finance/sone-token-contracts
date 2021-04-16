@@ -85,6 +85,34 @@ module.exports = {
       from: process.env.OPERATOR_ADDRESS,   // Send transactions from Operator Address
       skipDryRun: true                      // Skip dry run before migrations? (default: false for public nets )
     },
+    bsc: {
+      provider: () => new HDWalletProvider(
+        //  process.env.MNEMONIC,  // Using MNEMONIC or PRIVATE_KEY
+        process.env.OPERATOR_PRIVATE_KEY,
+        `https://data-seed-prebsc-1-s3.binance.org:8545`
+      ),
+      network_id: 56,                       // BSC's id
+      gas: process.env.GAS_LIMIT,           // BSC has a lower block limit than mainnet 12,500,000. MAXIMUM BSC Block GAS_LIMIT = 10,000,000
+      gasPrice: process.env.GAS_PRICE,      // Default gasPrice to send a transaction
+      confirmations: 2,                     // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,                   // # of blocks before a deployment times out  (minimum/default: 50)
+      from: process.env.OPERATOR_ADDRESS,   // Send transactions from Operator Address
+      skipDryRun: true                      // Skip dry run before migrations? (default: false for public nets )
+    },
+    bsc_testnet: {
+      provider: () => new HDWalletProvider(
+        //  process.env.MNEMONIC,  // Using MNEMONIC or PRIVATE_KEY
+        process.env.OPERATOR_PRIVATE_KEY,
+        `https://data-seed-prebsc-1-s3.binance.org:8545`
+      ),
+      network_id: 97,                       // BSC testnet's id
+      gas: process.env.GAS_LIMIT,           // BSC testnet has a lower block limit than mainnet 12,500,000. MAXIMUM BSC testnet Block GAS_LIMIT = 10,000,000
+      gasPrice: process.env.GAS_PRICE,      // Default gasPrice to send a transaction
+      confirmations: 2,                     // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,                   // # of blocks before a deployment times out  (minimum/default: 50)
+      from: process.env.OPERATOR_ADDRESS,   // Send transactions from Operator Address
+      skipDryRun: true                      // Skip dry run before migrations? (default: false for public nets )
+    },
     // Useful for private networks
     // private: {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),

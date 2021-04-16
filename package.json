@@ -33,6 +33,8 @@
     "deploy:local": "yarn truffle migrate --network dev",
     "deploy:ropsten": "yarn truffle migrate --network ropsten",
     "deploy:rinkeby": "yarn truffle migrate --network rinkeby",
+    "deploy:bsc": "yarn truffle migrate --network bsc",
+    "deploy:bsc_testnet": "yarn truffle migrate --network bsc_testnet",
     "test": "yarn truffle test"
   }
 }
