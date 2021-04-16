@@ -1,16 +1,20 @@
 const SoneToken = artifacts.require('SoneToken')
 const BigNumber = require('bn.js')
 var BN = (s) => new BigNumber(s.toString(), 10)
-const reasonRevert = require("../constants/exceptions.js").reasonRevert;
+const reasonRevert = require("../helpers/exceptions.js").reasonRevert;
+const { deployProxy } = require('@openzeppelin/truffle-upgrades');
+
+
 const {
   expectRevert
 } = require('@openzeppelin/test-helpers');
 
-
 contract('SoneToken', ([owner, alice, bob]) => {
   beforeEach(async () => {
     // Deploy SONE token
-    this.soneToken = await SoneToken.new(1, 1000, { from: owner })
+    this.soneToken = await deployProxy(SoneToken, [1, 1000], {
+      initializer: '__SoneToken_init',
+    })
   })
 
   describe('# mint', async () => {

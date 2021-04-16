@@ -1,4 +1,4 @@
-module.exports.errTypes = {
+module.exports.reasonRevert = {
     onlyOwner            : "Ownable: caller is not the owner",
     cantTransfer         : "SoneToken: your SONE can't transfer right now",
     lockOverBalance      : "SoneToken: lock amount over blance",
@@ -7,12 +7,3 @@ module.exports.errTypes = {
     accessBurn           : "ERC20: burn amount exceeds allowance",
     setAllowTransferOn   : "SoneToken: invalid new allowTransferOn"
 }
-
-module.exports.tryCatch = async function(promise, errType) {
-    try {
-        await promise;
-        throw null;
-    } catch (error) {
-        assert.equal(error.reason, errType);
-    }
-};
