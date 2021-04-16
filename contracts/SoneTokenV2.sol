@@ -37,7 +37,7 @@ contract SoneTokenV2 is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC
      * @dev Return total locked SONE tokens.
      */
     function totalLock() public view returns (uint256) {
-        return _totalLock;
+        return _totalLock + 1000;
     }
 
     /**
