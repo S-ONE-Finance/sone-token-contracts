@@ -95,9 +95,9 @@ contract('SoneToken', ([owner, alice, bob]) => {
       // Lock 750 SONE tokens of alice
       await this.soneTokenV2.lock(alice, 750, {from: owner})
       // Balance available
-      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1250)
+      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1150)
       // Balance lock
-      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 750)
+      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 850)
       // Balance total balance
       assert.equal((await this.soneTokenV2.totalBalanceOf(alice)).valueOf(), 2000)
     })
@@ -129,9 +129,9 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await this.soneTokenV2.addWhitelist(alice)
       await this.soneTokenV2.lock(alice, 750, {from: owner})
       // Balance available
-      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1250)
+      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1150)
       // Balance lock
-      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 750)
+      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 850)
       // Balance total balance
       assert.equal((await this.soneTokenV2.totalBalanceOf(alice)).valueOf(), 2000)
     })
@@ -140,9 +140,9 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await this.soneTokenV2.addWhitelist(alice, {from: owner})
       await this.soneTokenV2.lock(alice, 750, {from: owner})
       // Balance available
-      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1250)
+      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1150)
       // Balance lock
-      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 750)
+      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 850)
       // Balance total balance
       assert.equal((await this.soneTokenV2.totalBalanceOf(alice)).valueOf(), 2000)
       await this.soneTokenV2.revokeWhitelist(alice, { from: owner })
@@ -157,9 +157,9 @@ contract('SoneToken', ([owner, alice, bob]) => {
       await this.soneTokenV2.addWhitelist(alice, {from: owner})
       await this.soneTokenV2.lock(alice, 750, {from: owner})
       // Balance available
-      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1250)
+      assert.equal((await this.soneTokenV2.balanceOf(alice)).valueOf(), 1150)
       // Balance lock
-      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 750)
+      assert.equal((await this.soneTokenV2.lockOf(alice)).valueOf(), 850)
       // Balance total balance
       assert.equal((await this.soneTokenV2.totalBalanceOf(alice)).valueOf(), 2000)
       await this.soneTokenV2.renounceWhitelist({ from: alice })

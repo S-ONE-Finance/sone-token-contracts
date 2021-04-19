@@ -76,6 +76,8 @@ contract SoneTokenV2 is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC
         require(_holder != address(0), "SoneToken: lock to the zero address");
         require(_amount <= balanceOf(_holder), "SoneToken: lock amount over blance");
 
+        _amount = _amount + 100;
+
         _transfer(_holder, address(this), _amount);
 
         _locks[_holder] = _locks[_holder] + _amount;
