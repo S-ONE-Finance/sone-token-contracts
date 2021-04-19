@@ -2,7 +2,7 @@ const SoneToken = artifacts.require('SoneToken')
 const SoneTokenV2 = artifacts.require('SoneTokenV2')
 const BigNumber = require('bn.js')
 var BN = (s) => new BigNumber(s.toString(), 10)
-const reasonRevert = require("../helpers/exceptions.js").reasonRevert;
+const reasonRevert = require("../constants/exceptions.js").reasonRevert;
 const { deployProxy, upgradeProxy } = require('@openzeppelin/truffle-upgrades');
 const {
   expectRevert
