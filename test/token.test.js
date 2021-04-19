@@ -1,8 +1,11 @@
 const SoneToken = artifacts.require('SoneToken')
 const BigNumber = require('bn.js')
 var BN = (s) => new BigNumber(s.toString(), 10)
-const tryCatch = require("../helpers/exceptions.js").tryCatch;
-const errTypes = require("../helpers/exceptions.js").errTypes;
+const reasonRevert = require("../constants/exceptions.js").reasonRevert;
+const {
+  expectRevert
+} = require('@openzeppelin/test-helpers');
+
 
 contract('SoneToken', ([owner, alice, bob]) => {
   beforeEach(async () => {
@@ -17,19 +20,19 @@ contract('SoneToken', ([owner, alice, bob]) => {
     })
 
     it('mint 1000 sone token not by owner', async () => {
-      await tryCatch(this.soneToken.mint(
+      await expectRevert(this.soneToken.mint(
         alice,
         1000,
         { from: alice }
-      ), errTypes.onlyOwner)
+      ), reasonRevert.onlyOwner)
     })
     
     it('mint over cap', async () => {
-      await tryCatch(this.soneToken.mint(
+      await expectRevert(this.soneToken.mint(
         alice,
         BN(100000000).mul(BN(Math.pow(10,19))).toString(),
         { from: owner }  
-      ), errTypes.mintOverCap)
+      ), reasonRevert.mintOverCap)
     })
   })
 
@@ -45,11 +48,11 @@ contract('SoneToken', ([owner, alice, bob]) => {
     })
 
     it('mint 1000 & burn 200 when not access', async () => {
-      await tryCatch(this.soneToken.burnFrom(
+      await expectRevert(this.soneToken.burnFrom(
         alice,
         200,
         { from: owner }  
-      ), errTypes.accessBurn)
+      ), reasonRevert.accessBurn)
     })
 
     it('mint 1000 & burn 200 when owner burn', async () => {
@@ -66,20 +69,20 @@ contract('SoneToken', ([owner, alice, bob]) => {
     })
 
     it('lock fail when allow transfer on not yet', async () => {
-      await tryCatch(this.soneToken.lock(
+      await expectRevert(this.soneToken.lock(
         alice,
         750,
         { from: owner }  
-      ), errTypes.cantTransfer)
+      ), reasonRevert.cantTransfer)
     })
 
     it('lock fail when lock over balance', async () => {
       // Set allow transfer on
-      await tryCatch(this.soneToken.lock(
+      await expectRevert(this.soneToken.lock(
         alice,
         1200,
         { from: owner }  
-      ), errTypes.lockOverBalance)
+      ), reasonRevert.lockOverBalance)
     })
 
     it('mint 1000 & lock 750 sone token by owner', async () => {
@@ -96,11 +99,11 @@ contract('SoneToken', ([owner, alice, bob]) => {
     })
 
     it('mint 1000 & lock 750 sone token not by owner', async () => {
-      await tryCatch(this.soneToken.lock(
+      await expectRevert(this.soneToken.lock(
         alice,
         750,
         { from: alice }  
-      ), errTypes.onlyOwner)
+      ), reasonRevert.onlyOwner)
     })
   })
 
@@ -111,11 +114,11 @@ contract('SoneToken', ([owner, alice, bob]) => {
     })
 
     it('lock fail when user not in white list and allow transfer on not yet', async () => {
-      await tryCatch(this.soneToken.lock(
+      await expectRevert(this.soneToken.lock(
         alice,
         750,
         { from: owner }  
-      ), errTypes.cantTransfer)
+      ), reasonRevert.cantTransfer)
     })
 
     it('lock ok when user in white list and allow transfer on not yet', async () => {
@@ -139,11 +142,11 @@ contract('SoneToken', ([owner, alice, bob]) => {
       // Balance total balance
       assert.equal((await this.soneToken.totalBalanceOf(alice)).valueOf(), 1000)
       await this.soneToken.revokeWhitelist(alice, { from: owner })
-      await tryCatch(this.soneToken.lock(
+      await expectRevert(this.soneToken.lock(
         alice,
         100,
         { from: owner }  
-      ), errTypes.cantTransfer)
+      ), reasonRevert.cantTransfer)
     })
 
     it('lock fail when user was removed from whitelist by self', async () => {
@@ -156,15 +159,15 @@ contract('SoneToken', ([owner, alice, bob]) => {
       // Balance total balance
       assert.equal((await this.soneToken.totalBalanceOf(alice)).valueOf(), 1000)
       await this.soneToken.renounceWhitelist({ from: alice })
-      await tryCatch(this.soneToken.lock(
+      await expectRevert(this.soneToken.lock(
         alice,
         100,
         { from: owner }  
-      ), errTypes.cantTransfer)
+      ), reasonRevert.cantTransfer)
     })
 
     it('renounce whitelist fail when user was not in whitelist renounce whitelist', async () => {
-      await tryCatch(this.soneToken.renounceWhitelist({ from: alice }), errTypes.accessWhitelist)
+      await expectRevert(this.soneToken.renounceWhitelist({ from: alice }), reasonRevert.accessWhitelist)
     })
   })
 
@@ -175,17 +178,17 @@ contract('SoneToken', ([owner, alice, bob]) => {
     })
 
     it('not transfer', async () => {
-      await tryCatch(this.soneToken.transfer(
+      await expectRevert(this.soneToken.transfer(
         bob,
         250,
         { from: alice }  
-      ), errTypes.cantTransfer)
+      ), reasonRevert.cantTransfer)
     })
 
     it('not set allowTransferOn', async () => {
-      await tryCatch(
+      await expectRevert(
         this.soneToken.setAllowTransferOn(10270808, {from: owner}
-      ), errTypes.setAllowTransferOn)
+      ), reasonRevert.setAllowTransferOn)
     })
 
     it('can transfer', async () => {
