@@ -28,7 +28,7 @@
     "truffle-hdwallet-provider": "^1.0.17"
   },
   "scripts": {
-    "precompile": "rimraf ./build/",
+    "precompile": "rimraf build .openzeppelin",
     "compile": "yarn truffle compile",
     "flatten": "mkdir -p build/flatten-contracts && yarn truffle-flattener",
     "deploy:ethereum": "yarn truffle migrate --network ethereum",
