@@ -6,7 +6,6 @@ const addressAdminUpgradable = '0x5970A03caDC82aF6a87CF09DBAC3a8a26D241f89';
 
 module.exports = async function (deployer, network) {
   if (network !== 'test') {
-    const adminUpgradable = await upgradeProxy(addressAdminUpgradable, SoneTokenV2, { deployer });
-    // console.log('adminUpgradable', adminUpgradable.address);
+    await upgradeProxy(addressAdminUpgradable, SoneTokenV2, { deployer });
   }
 };
