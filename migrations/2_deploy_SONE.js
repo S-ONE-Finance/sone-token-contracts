@@ -4,5 +4,7 @@ const lockFromBlock = 1;
 const lockToBlock = 10;
 
 module.exports = async function(deployer) {
-    await deployer.deploy(SoneToken, lockFromBlock, lockToBlock);
+    await deployer.deploy(SoneToken, lockFromBlock, lockToBlock, {
+        gas: 2075175
+    });
 };
