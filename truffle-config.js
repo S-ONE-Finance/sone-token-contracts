@@ -57,11 +57,29 @@ module.exports = {
     // },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
+    ethereum: {
+      provider: () => new HDWalletProvider( // Using MNEMONIC or PRIVATE_KEY
+        // process.env.MNEMONIC,
+        process.env.OPERATOR_PRIVATE_KEY,
+        // `https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
+        `wss://mainnet.infura.io/ws/v3/${process.env.INFURA_PROJECT_ID}`
+      ),
+      network_id: 1,                        // Mainnet's id
+      gas: process.env.GAS_LIMIT,           // Ropsten has a lower block limit than mainnet 12,500,000. MAXIMUM Ropsten Block GAS_LIMIT = 8,000,000
+      gasPrice: process.env.GAS_PRICE,      // Default gasPrice to send a transaction
+      confirmations: 2,                     // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,                   // # of blocks before a deployment times out  (minimum/default: 50)
+      from: process.env.OPERATOR_ADDRESS,   // Send transactions from Operator Address
+      skipDryRun: false,                      // Skip dry run before migrations? (default: false for public nets )
+      websocket: true,
+      networkCheckTimeout: 1800000
+    },
     ropsten: {
       provider: () => new HDWalletProvider( // Using MNEMONIC or PRIVATE_KEY
-        //  process.env.MNEMONIC,          
+        // process.env.MNEMONIC,
         process.env.OPERATOR_PRIVATE_KEY,
-        `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
+        // `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
+        `wss://ropsten.infura.io/ws/v3/${process.env.INFURA_PROJECT_ID}`
       ),
       network_id: 3,                        // Ropsten's id
       gas: process.env.GAS_LIMIT,           // Ropsten has a lower block limit than mainnet 12,500,000. MAXIMUM Ropsten Block GAS_LIMIT = 8,000,000
@@ -69,13 +87,16 @@ module.exports = {
       confirmations: 2,                     // # of confs to wait between deployments. (default: 0)
       timeoutBlocks: 200,                   // # of blocks before a deployment times out  (minimum/default: 50)
       from: process.env.OPERATOR_ADDRESS,   // Send transactions from Operator Address
-      skipDryRun: true                      // Skip dry run before migrations? (default: false for public nets )
+      skipDryRun: false,                     // Skip dry run before migrations? (default: false for public nets )
+      websocket: true,
+      networkCheckTimeout: 1800000
     },
     rinkeby: {
       provider: () => new HDWalletProvider(
-        //  process.env.MNEMONIC,  // Using MNEMONIC or PRIVATE_KEY
+        // process.env.MNEMONIC,  // Using MNEMONIC or PRIVATE_KEY
         process.env.OPERATOR_PRIVATE_KEY,
-        `https://rinkeby.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
+        // `https://rinkeby.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
+        `wss://rinkeby.infura.io/ws/v3/${process.env.INFURA_PROJECT_ID}`
       ),
       network_id: 4,                        // Rinkeby's id
       gas: process.env.GAS_LIMIT,           // Rinkeby has a lower block limit than mainnet 12,500,000. MAXIMUM Rinkeby Block GAS_LIMIT = 10,000,000
@@ -83,7 +104,9 @@ module.exports = {
       confirmations: 2,                     // # of confs to wait between deployments. (default: 0)
       timeoutBlocks: 200,                   // # of blocks before a deployment times out  (minimum/default: 50)
       from: process.env.OPERATOR_ADDRESS,   // Send transactions from Operator Address
-      skipDryRun: true                      // Skip dry run before migrations? (default: false for public nets )
+      skipDryRun: false,                      // Skip dry run before migrations? (default: false for public nets )
+      websocket: true,
+      networkCheckTimeout: 1800000
     },
     bsc: {
       provider: () => new HDWalletProvider(
