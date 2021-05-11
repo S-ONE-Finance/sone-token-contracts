@@ -1,7 +1,7 @@
 {
   "name": "@s-one-finance/core",
   "description": "🛠 Smart Contract for S-ONE Finance Swap.",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "main": "index.js",
   "files": [
     "build",
@@ -30,6 +30,7 @@
     "precompile": "rimraf ./build/",
     "compile": "yarn truffle compile",
     "flatten": "mkdir -p build/flatten-contracts && yarn truffle-flattener",
+    "deploy:ethereum": "yarn truffle migrate --network ethereum",
     "deploy:local": "yarn truffle migrate --network dev",
     "deploy:ropsten": "yarn truffle migrate --network ropsten",
     "deploy:rinkeby": "yarn truffle migrate --network rinkeby",

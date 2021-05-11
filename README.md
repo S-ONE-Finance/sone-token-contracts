@@ -15,13 +15,13 @@ To run the project, follow these steps. You must have at least node v10 and [yar
 First clone the repository:
 
 ```sh
-git clone https://github.com/S-ONE-Finance/sone-token.git
+git clone https://gitlab.vnext.vn/bhswap/bhswap-smart-contracts/sone-token-sale.git
 ```
 
-Move into the sone-token working directory
+Move into the sone-token-sale working directory
 
 ```sh
-cd sone-token
+cd sone-token-sale
 ```
 
 Install dependencies
