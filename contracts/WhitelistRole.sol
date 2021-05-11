@@ -14,17 +14,6 @@ contract WhitelistRole is Initializable, ContextUpgradeable, AccessControlUpgrad
     event WhitelistRemoved(address indexed account);
     event WhitelistRevoked(address indexed account);
 
-    // constructor() {
-    //     // Grant the contract deployer the default admin role: it will be able
-    //     // to grant and revoke any roles
-    //     _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
-    //     // Grant the contract deployer the WHITELIST_ROLE role
-    //     grantRole(WHITELIST_ROLE, _msgSender());
-    //     emit WhitelistAdded(_msgSender());
-    // }
-
-
     function __WhitelistRole_init() public initializer{
          // Grant the contract deployer the default admin role: it will be able
         // to grant and revoke any roles

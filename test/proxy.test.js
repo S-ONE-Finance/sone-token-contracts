@@ -205,5 +205,15 @@ contract('SoneToken', ([owner, alice, bob]) => {
        assert.equal((await this.soneTokenV2.balanceOf(bob)).valueOf(), 250)
     })
   })
-
+  describe('# add fuction to V2', async () => {
+    it('false white list', async () => {
+      const result = await this.soneTokenV2.checkWhiteList(alice, {from: owner})
+      assert.equal(result, false)
+    })
+    it('true white list', async () => {
+      await this.soneTokenV2.addWhitelist(alice, {from: owner})
+      const result = await this.soneTokenV2.checkWhiteList(alice, {from: owner})
+      assert.equal(result, true)
+    })
+  })
 })

@@ -177,4 +177,8 @@ contract SoneTokenV2 is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC
         require(block.number < allowTransferOn && allowTransferOn_ < allowTransferOn, "SoneToken: invalid new allowTransferOn");
         allowTransferOn = allowTransferOn_;
     }
+
+    function checkWhiteList(address account) external view onlyOwner returns(bool){
+        return super.isWhitelist(account);
+    }
 }
