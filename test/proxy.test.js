@@ -8,7 +8,7 @@ const {
   expectRevert
 } = require('@openzeppelin/test-helpers');
 
-contract('SoneToken', ([owner, alice, bob]) => {
+contract('SoneToken V2', ([owner, alice, bob]) => {
   beforeEach(async () => {
     console.log('owner', alice);
     // Deploy SONE v1 proxy token
@@ -192,7 +192,7 @@ contract('SoneToken', ([owner, alice, bob]) => {
 
     it('not set allowTransferOn', async () => {
       await expectRevert(
-        this.soneTokenV2.setAllowTransferOn(10270808, {from: owner}
+        this.soneTokenV2.setAllowTransferOn(12743799, {from: owner}
       ), reasonRevert.setAllowTransferOn)
     })
 

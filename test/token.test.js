@@ -191,7 +191,7 @@ contract('SoneToken', ([owner, alice, bob]) => {
 
     it('not set allowTransferOn', async () => {
       await expectRevert(
-        this.soneToken.setAllowTransferOn(10270808, {from: owner}
+        this.soneToken.setAllowTransferOn(12743799, {from: owner}
       ), reasonRevert.setAllowTransferOn)
     })
 
