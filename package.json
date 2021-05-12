@@ -31,12 +31,12 @@
     "precompile": "rimraf build .openzeppelin",
     "compile": "yarn truffle compile",
     "flatten": "mkdir -p build/flatten-contracts && yarn truffle-flattener",
-    "deploy:ethereum": "yarn truffle migrate --network ethereum",
-    "deploy:local": "yarn truffle migrate --network dev",
-    "deploy:ropsten": "yarn truffle migrate --network ropsten",
-    "deploy:rinkeby": "yarn truffle migrate --network rinkeby",
-    "deploy:bsc": "yarn truffle migrate --network bsc",
-    "deploy:bsc_testnet": "yarn truffle migrate --network bsc_testnet",
+    "deploy:ethereum": "yarn truffle migrate -f 1 --to 2 --network ethereum",
+    "deploy:local": "yarn truffle migrate -f 1 --to 2 --network dev",
+    "deploy:ropsten": "yarn truffle migrate -f 1 --to 2 --network ropsten",
+    "deploy:rinkeby": "yarn truffle migrate -f 1 --to 2 --network rinkeby",
+    "deploy:bsc": "yarn truffle migrate -f 1 --to 2 --network bsc",
+    "deploy:bsc_testnet": "yarn truffle migrate -f 1 --to 2 --network bsc_testnet",
     "test": "yarn truffle test"
   },
   "devDependencies": {

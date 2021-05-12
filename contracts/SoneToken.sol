@@ -13,10 +13,9 @@ import "./WhitelistRole.sol";
 
 // SONE Token based on ERC-20 standard
 contract SoneToken is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC20CappedUpgradeable, ERC20BurnableUpgradeable, WhitelistRole {
-    uint256 private _cap;                    // Maximum supply
+    uint256 private _cap;                                   // Maximum supply
     uint256 private _totalLock;                             // Pre-caculate total locked SONE tokens
 
-    // uint256 public allowTransferOn = 12549338;           // Blocker number 12549338 (on mainnet) ~ 2021-05-31 23:59:59 GMT+9 timezone
     uint256 public allowTransferOn;
     uint256 public lockFromBlock;                           // Block number that SONE token is locked from
     uint256 public lockToBlock;                             // Block number that SONE token is locked to
@@ -28,7 +27,7 @@ contract SoneToken is Initializable, OwnableUpgradeable, ERC20Upgradeable, ERC20
 
     function __SoneToken_init(uint256 lockFromBlock_, uint256 lockToBlock_) public initializer{
         _cap = 100000000e18;
-        allowTransferOn = 10270806;
+        allowTransferOn = 12743793;                         // Blocker number 12743793 (on mainnet) ~ 2021-07-01 00:00:00 GMT+8 timezone
         lockFromBlock = lockFromBlock_;
         lockToBlock = lockToBlock_;
         __ERC20_init("SONE Token", "SONE");
