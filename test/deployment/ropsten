@@ -10,10 +10,10 @@ Migrations dry-run (simulation)
 
    Deploying 'Migrations'
    ----------------------
-   > block number:        10216246
-   > block timestamp:     1620763582
+   > block number:        10220423
+   > block timestamp:     1620818285
    > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
-   > balance:             0.316517165
+   > balance:             1.818813112
    > gas used:            119812 (0x1d404)
    > gas price:           145 gwei
    > value sent:          0 ETH
@@ -28,23 +28,47 @@ Migrations dry-run (simulation)
 
    Deploying 'SoneToken'
    ---------------------
-   > block number:        10216248
-   > block timestamp:     1620763601
+   > block number:        10220425
+   > block timestamp:     1620818289
    > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
-   > balance:             0.033176145
-   > gas used:            1926775 (0x1d6677)
+   > balance:             1.484949742
+   > gas used:            2275205 (0x22b785)
    > gas price:           145 gwei
    > value sent:          0 ETH
-   > total cost:          0.279382375 ETH
+   > total cost:          0.329904725 ETH
+
+
+   Deploying 'ProxyAdmin'
+   ----------------------
+   > block number:        10220426
+   > block timestamp:     1620818293
+   > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
+   > balance:             1.407994907
+   > gas used:            530723 (0x81923)
+   > gas price:           145 gwei
+   > value sent:          0 ETH
+   > total cost:          0.076954835 ETH
+
+
+   Deploying 'AdminUpgradeabilityProxy'
+   ------------------------------------
+   > block number:        10220427
+   > block timestamp:     1620818319
+   > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
+   > balance:             1.332713662
+   > gas used:            519181 (0x7ec0d)
+   > gas price:           145 gwei
+   > value sent:          0 ETH
+   > total cost:          0.075281245 ETH
 
    -------------------------------------
-   > Total cost:         0.279382375 ETH
+   > Total cost:         0.482140805 ETH
 
 
 Summary
 =======
-> Total deployments:   2
-> Final cost:          0.296755115 ETH
+> Total deployments:   4
+> Final cost:          0.499513545 ETH
 
 
 
@@ -62,13 +86,13 @@ Starting migrations...
 
    Deploying 'Migrations'
    ----------------------
-   > transaction hash:    0x9a5417740c26e6701979bd5f867f8dbf90cc9d59451260c807fbf4f59da42881
-   > Blocks: 2            Seconds: 8
-   > contract address:    0x2d7A30841626bfC6b84a8b48fa6599520Ead055c
-   > block number:        10216249
-   > block timestamp:     1620763616
+   > transaction hash:    0x54b5d853050ab8e88ea3871c692a3da96d863b1e4bddab39a4910fca74cc3838
+   > Blocks: 2            Seconds: 16
+   > contract address:    0x931a645A38Ec303e6Aa572ED6f3c0D84f4F77Cef
+   > block number:        10220428
+   > block timestamp:     1620818337
    > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
-   > balance:             0.314153665
+   > balance:             1.816449612
    > gas used:            136112 (0x213b0)
    > gas price:           145 gwei
    > value sent:          0 ETH
@@ -76,8 +100,8 @@ Starting migrations...
 
    Pausing for 2 confirmations...
    ------------------------------
-   > confirmation number: 1 (block: 10216250)
-   > confirmation number: 3 (block: 10216252)
+   > confirmation number: 1 (block: 10220429)
+   > confirmation number: 2 (block: 10220430)
 
    > Saving migration to chain.
    > Saving artifacts
@@ -90,34 +114,72 @@ Starting migrations...
 
    Deploying 'SoneToken'
    ---------------------
-   > transaction hash:    0x3d40c20a825d214dde9b31982d56a00afcb1acebc2f136560506240d53062e20
-   > Blocks: 1            Seconds: 4
-   > contract address:    0x84b23ceA979F76b735626ecA2e6B7C8fe1Dc8211
-   > block number:        10216255
-   > block timestamp:     1620763640
+   > transaction hash:    0xc29904a785b9a27504df1830250b5921576d4bae911833e3e6d6dbdc6a7cc10d
+   > Blocks: 2            Seconds: 4
+   > contract address:    0x950d35291c8D6c8e693D3086d40e330542E0fE2F
+   > block number:        10220433
+   > block timestamp:     1620818400
    > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
-   > balance:             0.006626645
-   > gas used:            2075175 (0x1faa27)
+   > balance:             1.479918242
+   > gas used:            2275205 (0x22b785)
    > gas price:           145 gwei
    > value sent:          0 ETH
-   > total cost:          0.300900375 ETH
+   > total cost:          0.329904725 ETH
 
    Pausing for 2 confirmations...
    ------------------------------
-   > confirmation number: 1 (block: 10216256)
-   > confirmation number: 2 (block: 10216257)
+   > confirmation number: 1 (block: 10220434)
+   > confirmation number: 2 (block: 10220435)
+
+   Deploying 'ProxyAdmin'
+   ----------------------
+   > transaction hash:    0xc261b9324363a2a44e2a1e306758116f012c95254d4ff56c35660daf13f492d2
+   > Blocks: 0            Seconds: 8
+   > contract address:    0xAb504745C0340cE7829C8D9710d5305FD96d8137
+   > block number:        10220437
+   > block timestamp:     1620818426
+   > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
+   > balance:             1.400599907
+   > gas used:            547023 (0x858cf)
+   > gas price:           145 gwei
+   > value sent:          0 ETH
+   > total cost:          0.079318335 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 10220438)
+   > confirmation number: 3 (block: 10220440)
+
+   Deploying 'AdminUpgradeabilityProxy'
+   ------------------------------------
+   > transaction hash:    0x1c9e4121df1830585ffc63774ef8917e4cda2ff60bfd8b07104f79d9c0a93a78
+   > Blocks: 1            Seconds: 16
+   > contract address:    0xb3E377aEF4ba53d80c19971AF163ad74a02b1D4B
+   > block number:        10220441
+   > block timestamp:     1620818475
+   > account:             0xF00a3bCDeE720edE115C00bEFfE1D5eb3bc1a509
+   > balance:             1.296956662
+   > gas used:            714781 (0xae81d)
+   > gas price:           145 gwei
+   > value sent:          0 ETH
+   > total cost:          0.103643245 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 10220442)
+   > confirmation number: 2 (block: 10220443)
 
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:         0.300900375 ETH
+   > Total cost:         0.512866305 ETH
 
 
 Summary
 =======
-> Total deployments:   2
-> Final cost:          0.320636615 ETH
+> Total deployments:   4
+> Final cost:          0.532602545 ETH
 
 
 
-✨  Done in 113.70s.
+✨  Done in 265.69s.
