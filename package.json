@@ -1,7 +1,7 @@
 {
   "name": "@s-one-finance/core",
   "description": "🛠 Smart Contract for S-ONE Finance Swap.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "index.js",
   "files": [
     "build",
@@ -31,13 +31,19 @@
     "precompile": "rimraf build .openzeppelin",
     "compile": "yarn truffle compile",
     "flatten": "mkdir -p build/flatten-contracts && yarn truffle-flattener",
-    "deploy:ethereum": "yarn truffle migrate -f 1 --to 2 --network ethereum",
-    "deploy:local": "yarn truffle migrate -f 1 --to 2 --network dev",
-    "deploy:ropsten": "yarn truffle migrate -f 1 --to 2 --network ropsten",
-    "deploy:rinkeby": "yarn truffle migrate -f 1 --to 2 --network rinkeby",
-    "deploy:bsc": "yarn truffle migrate -f 1 --to 2 --network bsc",
-    "deploy:bsc_testnet": "yarn truffle migrate -f 1 --to 2 --network bsc_testnet",
-    "test": "yarn truffle test"
+    "test": "yarn truffle test",
+    "deploy:ethereum":    "yarn truffle migrate --to 2 --network ethereum",
+    "deploy:local":       "yarn truffle migrate --to 2 --network dev",
+    "deploy:ropsten":     "yarn truffle migrate --to 2 --network ropsten",
+    "deploy:rinkeby":     "yarn truffle migrate --to 2 --network rinkeby",
+    "deploy:bsc":         "yarn truffle migrate --to 2 --network bsc",
+    "deploy:bsc_testnet": "yarn truffle migrate --to 2 --network bsc_testnet",
+    "deploy-upgrade:ethereum":    "yarn truffle migrate --to 3 --network ethereum",
+    "deploy-upgrade:local":       "yarn truffle migrate --to 3 --network dev",
+    "deploy-upgrade:ropsten":     "yarn truffle migrate --to 3 --network ropsten",
+    "deploy-upgrade:rinkeby":     "yarn truffle migrate --to 3 --network rinkeby",
+    "deploy-upgrade:bsc":         "yarn truffle migrate --to 3 --network bsc",
+    "deploy-upgrade:bsc_testnet": "yarn truffle migrate --to 3 --network bsc_testnet"
   },
   "devDependencies": {
     "@openzeppelin/truffle-upgrades": "^1.5.1"

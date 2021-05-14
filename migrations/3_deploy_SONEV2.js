@@ -8,4 +8,4 @@ module.exports = async function (deployer, network) {
   if (network !== 'test') {
     await upgradeProxy(adminUpgradableAddress, SoneTokenV2, { deployer });
   }
-};
+}

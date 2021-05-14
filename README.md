@@ -23,13 +23,13 @@ To run the project, follow these steps. You must have at least node v10 and [yar
 First clone the repository:
 
 ```sh
-git clone https://github.com/S-ONE-Finance/sone-token-contract.git
+git clone https://github.com/S-ONE-Finance/sone-token-contracts.git
 ```
 
-Move into the sone-token-contract working directory
+Move into the sone-token-contracts working directory
 
 ```sh
-cd sone-token-contract
+cd sone-token-contracts
 ```
 
 Install dependencies
