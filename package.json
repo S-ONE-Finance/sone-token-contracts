@@ -1,7 +1,7 @@
 {
   "name": "@s-one-finance/core",
   "description": "🛠 Smart Contract for S-ONE Finance Swap.",
-  "version": "2.0.0-rc1",
+  "version": "2.0.0",
   "main": "index.js",
   "files": [
     "artifacts",
