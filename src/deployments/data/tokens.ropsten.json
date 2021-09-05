@@ -1,0 +1,14 @@
+[
+  {
+    "address": "0xe3d5220C111fDAd08631E037aF8449766ef8e73E",
+    "decimals": 18,
+    "name": "SONE Token",
+    "symbol": "SONE"
+  },
+  {
+    "decimals": 0,
+    "symbol": "",
+    "address": "0x50d1684d9aA421b0b6aB30349f3861EAcc03c0b9",
+    "name": "MutiSender"
+  }
+]

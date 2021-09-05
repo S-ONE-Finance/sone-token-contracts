@@ -3,6 +3,9 @@
 
 # Build
 /build
+/cache
+/artifacts
+**/types
 
 # System
 .DS_Store
@@ -12,9 +15,16 @@
 
 # IDE
 .idea
-.vscode
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+**/.history
 
 # Privacy
 .env
-
-.openzeppelin/

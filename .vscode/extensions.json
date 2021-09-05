@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "juanblanco.solidity",
+    "idrabenia.solidity-solhint",
+    "esbenp.prettier-vscode",
+    "hbenl.vscode-mocha-test-adapter"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "solidity.compileUsingRemoteVersion": "v0.4.17",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}

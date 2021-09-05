@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": { "~/*": ["src/*"] },
+    "lib": ["ES2018"],
+    "module": "CommonJS",
+    "target": "ES2018",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": ["@types/node", "@types/chai", "@types/mocha", "mocha", "@nomiclabs/hardhat-ethers", "@nomiclabs/hardhat-waffle"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "build", "cache", "artifacts"],
+  "files": ["./hardhat.config.ts"]
+}

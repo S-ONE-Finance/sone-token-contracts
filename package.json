@@ -1,51 +1,47 @@
 {
   "name": "@s-one-finance/core",
   "description": "🛠 Smart Contract for S-ONE Finance Swap.",
-  "version": "2.0.0",
+  "version": "2.0.0-rc1",
   "main": "index.js",
   "files": [
-    "build",
-    "contracts"
+    "artifacts",
+    "contracts",
+    "test"
   ],
   "license": "MIT",
-  "repository": "https://github.com/S-ONE-Finance/soneswap-core.git",
   "keywords": [
     "soneswap",
     "ethereum",
     "uniswap",
     "sushiswap"
   ],
-  "dependencies": {
-    "@openzeppelin/contracts": "^4.0.0",
-    "@openzeppelin/contracts-upgradeable": "^4.0.0",
-    "@openzeppelin/test-helpers": "^0.5.10",
-    "@truffle/hdwallet-provider": "^1.2.1",
-    "dotenv": "^8.2.0",
-    "mocha": "^8.3.2",
-    "rimraf": "^3.0.2",
-    "truffle": "^5.1.44",
-    "truffle-flattener": "^1.4.4",
-    "truffle-hdwallet-provider": "^1.0.17"
-  },
   "scripts": {
-    "precompile": "rimraf build .openzeppelin",
-    "compile": "yarn truffle compile",
-    "flatten": "mkdir -p build/flatten-contracts && yarn truffle-flattener",
-    "test": "yarn truffle test",
-    "deploy:ethereum":    "yarn truffle migrate --to 2 --network ethereum",
-    "deploy:local":       "yarn truffle migrate --to 2 --network dev",
-    "deploy:ropsten":     "yarn truffle migrate --to 2 --network ropsten",
-    "deploy:rinkeby":     "yarn truffle migrate --to 2 --network rinkeby",
-    "deploy:bsc":         "yarn truffle migrate --to 2 --network bsc",
-    "deploy:bsc_testnet": "yarn truffle migrate --to 2 --network bsc_testnet",
-    "deploy-upgrade:ethereum":    "yarn truffle migrate --to 3 --network ethereum",
-    "deploy-upgrade:local":       "yarn truffle migrate --to 3 --network dev",
-    "deploy-upgrade:ropsten":     "yarn truffle migrate --to 3 --network ropsten",
-    "deploy-upgrade:rinkeby":     "yarn truffle migrate --to 3 --network rinkeby",
-    "deploy-upgrade:bsc":         "yarn truffle migrate --to 3 --network bsc",
-    "deploy-upgrade:bsc_testnet": "yarn truffle migrate --to 3 --network bsc_testnet"
+    "task:help": "hardhat --help",
+    "task:private": "hardhat --network private",
+    "task:ganache": "hardhat --network ganache",
+    "task:ropsten": "hardhat --network ropsten"
   },
   "devDependencies": {
-    "@openzeppelin/truffle-upgrades": "^1.5.1"
+    "@nomiclabs/hardhat-ethers": "^2.0.0",
+    "@nomiclabs/hardhat-waffle": "^2.0.0",
+    "@openzeppelin/contracts": "^4.3.0",
+    "@openzeppelin/contracts-upgradeable": "^4.3.0",
+    "@openzeppelin/hardhat-upgrades": "^1.9.0",
+    "@s-one-finance/sdk-core": "^1.1.2",
+    "@typechain/ethers-v5": "^7.0.1",
+    "@typechain/hardhat": "^2.1.2",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^8.2.3",
+    "@types/node": "^16.3.0",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "ethereum-waffle": "^3.0.0",
+    "ethers": "^5.0.0",
+    "hardhat": "^2.4.3",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.10.1",
+    "typechain": "^5.1.1",
+    "typescript": "^4.3.5"
   }
 }
