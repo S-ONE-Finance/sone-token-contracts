@@ -6,6 +6,7 @@
 /cache
 /artifacts
 **/types
+/.openzeppelin*
 
 # System
 .DS_Store

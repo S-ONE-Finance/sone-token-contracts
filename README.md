@@ -9,9 +9,10 @@ In-depth documentation on this SDK is available at [docs.s-one.finance](http://d
 Feel free to read the code.
 
 ## SONE Token - A governance token of S-ONE Finance: 
-- Mainnet address: [0xf5c771e0b749444eaec5c1f7ef5c0b93200bb0e4](https://etherscan.io/token/0xf5c771e0b749444eaec5c1f7ef5c0b93200bb0e4)
+- Mainnet Ethereum ERC-20 address: [0xf5c771e0b749444eaec5c1f7ef5c0b93200bb0e4](https://etherscan.io/token/0xf5c771e0b749444eaec5c1f7ef5c0b93200bb0e4)
+- Mainnet Binance Smart Chain BEP-20 address: [0xe951e20BE7f838F923cafD2E3c5297c6904343e3](https://bscscan.com/address/0xe951e20BE7f838F923cafD2E3c5297c6904343e3)
 - Token Sale Announcement: https://s-one.finance/
-- SONE token price: 0.3 USDT
+- SONE token price: 0.55 USDT
 - Accepted ETH, BTC, USDT, USDC, BUSD, Others.
 - MIN amount: $500
 - From May 10 to Aug 31 2021
